@@ -18,66 +18,76 @@ package org.japo.java.forms;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Properties;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import org.japo.java.libraries.UtilesSwing;
 
 /**
  *
  * @author José A. Pacheco Ondoño - joanpaon@gmail.com
  */
 public class GUI extends JFrame {
-    // Tamaño de la ventana
-    public static final int VENTANA_ANC = 500;
-    public static final int VENTANA_ALT = 400;
 
-    public GUI() {
-        // Inicialización PREVIA
-        beforeInit();
+    // Propiedades App
+    public static final String PRP_LOOK_AND_FEEL = "look_and_feel";
+    public static final String PRP_FAVICON = "favicon";
 
-        // Creación del interfaz
+    // Valores por Defecto
+    public static final String DEF_LOOK_AND_FEEL = UtilesSwing.LNF_NIMBUS;
+    public static final String DEF_FAVICON = "img/favicon.png";
+
+    // Referencias
+    private Properties prp;
+
+    // Constructor
+    public GUI(Properties prp) {
+        // Inicialización Anterior
+        initBefore(prp);
+
+        // Creación Interfaz
         initComponents();
 
-        // Inicialización POSTERIOR
-        afterInit();
+        // Inicializacion Posterior
+        initAfter();
     }
 
     // Construcción del IGU
     private void initComponents() {
-        // Fuente de la etiqueta
-        Font f = new Font("Calibri", Font.BOLD, 80);
-
-        // Panel Principal
-        JPanel pnlPpal = new JPanel();
-        pnlPpal.setLayout(new BorderLayout());
-        
         // Etiqueta del rótulo
-        JLabel lblRotulo = new JLabel("EN VENTA");
+        JLabel lblRotulo = new JLabel("¡REBAJAS!");
         lblRotulo.setHorizontalAlignment(JLabel.CENTER);
         lblRotulo.setOpaque(true);
-        lblRotulo.setBackground(Color.BLUE);
+        lblRotulo.setBackground(Color.RED);
         lblRotulo.setForeground(Color.WHITE);
-        lblRotulo.setFont(f);
+        lblRotulo.setFont(new Font("Swis721 Blk BT", Font.BOLD, 70));
+
+        // Panel Principal
+        JPanel pnlPpal = new JPanel(new BorderLayout());
         pnlPpal.add(lblRotulo, BorderLayout.CENTER);
-        
+       
         // Ventana principal
-        setTitle("Etiqueta Centrada");
         setContentPane(pnlPpal);
-//        setResizable(false);
-        setSize(VENTANA_ANC, VENTANA_ALT);
-//        pack();
+        setTitle("Swing Manual #03");
+        setResizable(false);
+        setSize(500, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
     }
 
-    // Inicialización antes del IGU
-    private void beforeInit() {
+    // Inicialización Anterior    
+    private void initBefore(Properties prp) {
+        // Memorizar Referencia
+        this.prp = prp;
 
+        // Establecer LnF
+        UtilesSwing.establecerLnF(prp.getProperty(PRP_LOOK_AND_FEEL, DEF_LOOK_AND_FEEL));
     }
 
-    // Inicialización después del IGU
-    private void afterInit() {
-
+    // Inicialización Anterior
+    private void initAfter() {
+        // Establecer Favicon
+        UtilesSwing.establecerFavicon(this, prp.getProperty(PRP_FAVICON, DEF_FAVICON));
     }
-
 }
