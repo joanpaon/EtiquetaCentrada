@@ -58,10 +58,11 @@ public class GUI extends JFrame {
         // Etiqueta del rótulo
         JLabel lblRotulo = new JLabel("¡REBAJAS!");
         lblRotulo.setHorizontalAlignment(JLabel.CENTER);
+        lblRotulo.setVerticalAlignment(JLabel.CENTER);
         lblRotulo.setOpaque(true);
         lblRotulo.setBackground(Color.RED);
         lblRotulo.setForeground(Color.WHITE);
-        lblRotulo.setFont(new Font("Swis721 Blk BT", Font.BOLD, 70));
+        lblRotulo.setFont(new Font("SansSerif", Font.BOLD, 70));
 
         // Panel Principal
         JPanel pnlPpal = new JPanel(new BorderLayout());
