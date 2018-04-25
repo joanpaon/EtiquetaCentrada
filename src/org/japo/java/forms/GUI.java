@@ -35,7 +35,7 @@ public class GUI extends JFrame {
     public static final String PRP_FAVICON = "favicon";
 
     // Valores por Defecto
-    public static final String DEF_LOOK_AND_FEEL = UtilesSwing.LNF_NIMBUS;
+    public static final String DEF_LOOK_AND_FEEL = UtilesSwing.LNF_WINDOWS;
     public static final String DEF_FAVICON = "img/favicon.png";
 
     // Referencias
@@ -67,14 +67,14 @@ public class GUI extends JFrame {
         // Panel Principal
         JPanel pnlPpal = new JPanel(new BorderLayout());
         pnlPpal.add(lblRotulo, BorderLayout.CENTER);
-       
+
         // Ventana principal
         setContentPane(pnlPpal);
         setTitle("Swing Manual #03");
         setResizable(false);
         setSize(500, 300);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     // Inicialización Anterior    
@@ -86,7 +86,7 @@ public class GUI extends JFrame {
         UtilesSwing.establecerLnF(prp.getProperty(PRP_LOOK_AND_FEEL, DEF_LOOK_AND_FEEL));
     }
 
-    // Inicialización Anterior
+    // Inicialización Posterior
     private void initAfter() {
         // Establecer Favicon
         UtilesSwing.establecerFavicon(this, prp.getProperty(PRP_FAVICON, DEF_FAVICON));
