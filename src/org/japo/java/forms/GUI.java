@@ -28,23 +28,36 @@ import org.japo.java.libraries.UtilesSwing;
  *
  * @author José A. Pacheco Ondoño - joanpaon@gmail.com
  */
-public class GUI extends JFrame {
+public final class GUI extends JFrame {
 
     // Propiedades App
-    public static final String PRP_LOOK_AND_FEEL = "look_and_feel";
-    public static final String PRP_FAVICON = "favicon";
+    public static final String PRP_LOOK_AND_FEEL_PROFILE = "form_look_and_feel_profile";
+    public static final String PRP_FAVICON_RESOURCE = "form_favicon_resource";
+    public static final String PRP_FORM_TITLE = "form_title";
+    public static final String PRP_FORM_HEIGHT = "form_height";
+    public static final String PRP_FORM_WIDTH = "form_width";
+    public static final String PRP_FORM_BACKGROUND_RESOURCE = "form_background_resource";
+    public static final String PRP_FORM_FONT_RESOURCE = "form_font_resource";
 
     // Valores por Defecto
-    public static final String DEF_LOOK_AND_FEEL = UtilesSwing.LNF_WINDOWS;
-    public static final String DEF_FAVICON = "img/favicon.png";
+    public static final String DEF_LOOK_AND_FEEL_PROFILE = UtilesSwing.LNF_WINDOWS_PROFILE;
+    public static final String DEF_FAVICON_RESOURCE = "img/favicon.png";
+    public static final String DEF_FORM_TITLE = "Swing Manual App";
+    public static final int DEF_FORM_HEIGHT = 300;
+    public static final int DEF_FORM_WIDTH = 500;
+    public static final String DEF_FORM_BACKGROUND_RESOURCE = "img/background.jpg";
+    public static final String DEF_FORM_FONT_RESOURCE = "fonts/default_font.ttf";
 
     // Referencias
-    private Properties prp;
+    private final Properties prp;
 
     // Constructor
     public GUI(Properties prp) {
+        // Conectar Referencia
+        this.prp = prp;
+
         // Inicialización Anterior
-        initBefore(prp);
+        initBefore();
 
         // Creación Interfaz
         initComponents();
@@ -70,25 +83,30 @@ public class GUI extends JFrame {
 
         // Ventana principal
         setContentPane(pnlPpal);
-        setTitle("Swing Manual #03");
+        setTitle(prp.getProperty(PRP_FORM_TITLE, DEF_FORM_TITLE));
+        try {
+            int height = Integer.parseInt(prp.getProperty(PRP_FORM_HEIGHT));
+            int width = Integer.parseInt(prp.getProperty(PRP_FORM_WIDTH));
+            setSize(width, height);
+        } catch (NumberFormatException e) {
+            setSize(DEF_FORM_WIDTH, DEF_FORM_HEIGHT);
+        }
         setResizable(false);
-        setSize(500, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     // Inicialización Anterior    
-    private void initBefore(Properties prp) {
-        // Memorizar Referencia
-        this.prp = prp;
-
+    private void initBefore() {
         // Establecer LnF
-        UtilesSwing.establecerLnF(prp.getProperty(PRP_LOOK_AND_FEEL, DEF_LOOK_AND_FEEL));
+        UtilesSwing.establecerLnFProfile(prp.getProperty(
+                PRP_LOOK_AND_FEEL_PROFILE, DEF_LOOK_AND_FEEL_PROFILE));
     }
 
     // Inicialización Posterior
     private void initAfter() {
         // Establecer Favicon
-        UtilesSwing.establecerFavicon(this, prp.getProperty(PRP_FAVICON, DEF_FAVICON));
+        UtilesSwing.establecerFavicon(this, prp.getProperty(
+                PRP_FAVICON_RESOURCE, DEF_FAVICON_RESOURCE));
     }
 }
