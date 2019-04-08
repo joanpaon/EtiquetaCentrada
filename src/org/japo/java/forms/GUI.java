@@ -50,6 +50,10 @@ public final class GUI extends JFrame {
 
     // Referencias
     private final Properties prp;
+    
+    // Componentes
+    private JLabel lblRotulo;
+    private JPanel pnlPpal;
 
     // Constructor
     public GUI(Properties prp) {
@@ -69,7 +73,7 @@ public final class GUI extends JFrame {
     // Construcción del IGU
     private void initComponents() {
         // Etiqueta del rótulo
-        JLabel lblRotulo = new JLabel("¡REBAJAS!");
+        lblRotulo = new JLabel("¡REBAJAS!");
         lblRotulo.setHorizontalAlignment(JLabel.CENTER);
         lblRotulo.setVerticalAlignment(JLabel.CENTER);
         lblRotulo.setOpaque(true);
@@ -78,7 +82,7 @@ public final class GUI extends JFrame {
         lblRotulo.setFont(new Font("SansSerif", Font.BOLD, 70));
 
         // Panel Principal
-        JPanel pnlPpal = new JPanel(new BorderLayout());
+        pnlPpal = new JPanel(new BorderLayout());
         pnlPpal.add(lblRotulo, BorderLayout.CENTER);
 
         // Ventana principal
