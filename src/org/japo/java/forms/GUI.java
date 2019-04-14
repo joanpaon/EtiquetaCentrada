@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 José A. Pacheco Ondoño - joanpaon@gmail.com.
+ * Copyright 2019 José A. Pacheco Ondoño - joanpaon@gmail.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,22 +31,18 @@ import org.japo.java.libraries.UtilesSwing;
 public final class GUI extends JFrame {
 
     // Propiedades App
-    public static final String PRP_LOOK_AND_FEEL_PROFILE = "form_look_and_feel_profile";
-    public static final String PRP_FAVICON_RESOURCE = "form_favicon_resource";
-    public static final String PRP_FORM_TITLE = "form_title";
+    public static final String PRP_FAVICON_RESOURCE = "favicon_resource";
     public static final String PRP_FORM_HEIGHT = "form_height";
     public static final String PRP_FORM_WIDTH = "form_width";
-    public static final String PRP_FORM_BACKGROUND_RESOURCE = "form_background_resource";
-    public static final String PRP_FORM_FONT_RESOURCE = "form_font_resource";
+    public static final String PRP_FORM_TITLE = "form_title";
+    public static final String PRP_LOOK_AND_FEEL_PROFILE = "look_and_feel_profile";
 
     // Valores por Defecto
-    public static final String DEF_LOOK_AND_FEEL_PROFILE = UtilesSwing.LNF_WINDOWS_PROFILE;
     public static final String DEF_FAVICON_RESOURCE = "img/favicon.png";
-    public static final String DEF_FORM_TITLE = "Swing Manual App";
     public static final int DEF_FORM_HEIGHT = 300;
     public static final int DEF_FORM_WIDTH = 500;
-    public static final String DEF_FORM_BACKGROUND_RESOURCE = "img/background.jpg";
-    public static final String DEF_FORM_FONT_RESOURCE = "fonts/default_font.ttf";
+    public static final String DEF_FORM_TITLE = "Swing Manual App";
+    public static final String DEF_LOOK_AND_FEEL_PROFILE = UtilesSwing.LNF_WINDOWS_PROFILE;
 
     // Referencias
     private final Properties prp;
@@ -70,7 +66,7 @@ public final class GUI extends JFrame {
         initAfter();
     }
 
-    // Construcción del IGU
+    // Construcción - GUI
     private void initComponents() {
         // Etiqueta del rótulo
         lblRotulo = new JLabel("¡REBAJAS!");
@@ -85,7 +81,7 @@ public final class GUI extends JFrame {
         pnlPpal = new JPanel(new BorderLayout());
         pnlPpal.add(lblRotulo, BorderLayout.CENTER);
 
-        // Ventana principal
+        // Ventana Principal
         setContentPane(pnlPpal);
         setTitle(prp.getProperty(PRP_FORM_TITLE, DEF_FORM_TITLE));
         try {
