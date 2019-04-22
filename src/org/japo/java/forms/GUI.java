@@ -89,7 +89,7 @@ public final class GUI extends JFrame {
         // Establecer Favicon
         UtilesSwing.establecerFavicon(this, prp.getProperty("img_favicon_resource"));
 
-        // Ventana Principal - Propiedades
+        // Ventana Principal
         setTitle(prp.getProperty("form_title"));
         int width = Integer.parseInt(prp.getProperty("form_width"));
         int height = Integer.parseInt(prp.getProperty("form_height"));
